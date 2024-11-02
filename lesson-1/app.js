@@ -16,12 +16,27 @@ var name = "Sanjar";
 
 // Const example (how to not do)
 
-const k = 8;
-k = 20;
-console.log(k) // this is gonna give an error
+// const k = 8;
+// k = 20;
+// console.log(k) // this is gonna give an error
 
 // Note: only in case of 5 + "5" JS will 55
 // but if you 5 * "5" it will give you 25 (and all other operations as well)
 
 
 // Data Types in JS = string, number, object, boolean, null, undefined, BingInt, Symbol
+
+
+// Home Work
+
+//1
+// let a = prompt("A")
+// let b = prompt("B")
+
+// document.write(a * b)
+
+//2 
+// let a = +prompt("A")
+// let b = +prompt("B")
+
+// document.write((a + b) * 2)
