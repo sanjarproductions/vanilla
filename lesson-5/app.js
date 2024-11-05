@@ -32,7 +32,22 @@
 
 
 // Parametr Va Argumentlar (teacher said we will need this ehile working with API's)
+// let width = 10;
+// let height = 20;
 
-function greet() {
-    return
-}
+// function greet(w, h) { // parametr
+//     console.log(w * h)
+// }
+
+// greet(width, height) // argument
+
+// let width = 10;
+// let height = 20;
+
+// function greet(w, h) { 
+//     let result = w * h
+//     return result // return is basically throwing the resule of a functino outside of a fucntion so you can use it
+// }
+
+// let endResult = greet(width, height) // but then you need to put it, in to some kind of variable outside of function
+// console.log(endResult)
