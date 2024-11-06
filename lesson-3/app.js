@@ -60,6 +60,7 @@
 //FOR Loop
 
 // let i = 0; // you can also write it here as well
-for (let i = 0; i <= 10; i++){
-    console.log(i)
-}
+// for (let i = 0; i <= 10; i++){
+//     console.log(i)
+// }
+
