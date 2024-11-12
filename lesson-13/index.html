@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .wrapper {
+            width: 100px;
+            height: 50px;
+            border-radius: 25px;
+            background: grey;
+            padding: 7px;
+        }
+
+        .circle {
+            transition: 200ms;
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .toggled {
+            transform: translateX(50px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <h1 id="h1">Hello World</h1> -->
+    <!-- <button id="click-btn">Click Me</button> -->
+
+    <div class="wrapper" id="wrapper">
+        <div class="circle" id="circle"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
