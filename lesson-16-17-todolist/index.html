@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="todolist">
+        <div class="todolist__controller">
+            <form class="todolist-form" id="todolist-form">
+                <div class="input__wrapper">
+                    <input type="text" id="todolist__input" class="todolist__input">
+                    <i class="fas fa-close" id="clear__input"></i>
+                </div>
+                <button type="submit" id="add"> <i class="fas fa-plus"></i> Add</button>
+            </form>
+            <button>Delete All</button>
+        </div>
+        <div class="tasks" id="tasks"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

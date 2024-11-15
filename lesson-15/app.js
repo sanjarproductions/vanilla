@@ -1,16 +1,16 @@
-// const inp = document.querySelector("#input")
-// const btn = document.querySelector("#click-btn");
-// const box = document.querySelector("#box")
+const inp = document.querySelector("#input")
+const btn = document.querySelector("#click-btn");
+const box = document.querySelector("#box")
 
-// btn.addEventListener("click", () => {
+btn.addEventListener("click", () => {
 
-//     if (inp.value.trim() !== "") {
-//         const p = document.createElement("p")
-//         // box.appendChild(p) // add to the end 
-//         box.prepend(p)
-//         p.innerHTML = inp.value
-//     }
-// })
+    if (inp.value.trim() !== "") {
+        const p = document.createElement("p")
+        // box.appendChild(p) // add to the end 
+        box.prepend(p)
+        p.innerHTML = inp.value
+    }
+})
 
 
 
