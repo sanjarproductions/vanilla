@@ -3,8 +3,14 @@ const addBtn = document.querySelector("#add");
 const deleteAllBtn = document.querySelector("#del-all")
 const clearInput = document.querySelector("#clear__input");
 const taksWrapper = document.querySelector("#tasks")
+const TASKS = JSON.parse(localStorage.getItem("storedTasks")) || [];
 
-const TASKS = [];
+function saveTasksToLocalStorage() {
+    localStorage.setItem("storedTasks", JSON.stringify(TASKS));
+}
+
+
+render()
 
 addBtn.addEventListener("click", (e) => {
     e.preventDefault()
@@ -18,10 +24,13 @@ addBtn.addEventListener("click", (e) => {
         };
         TASKS.unshift(task)
         input.value = "";
-
+        // localStorage.setItem("storeedTasks", JSON.stringify(task))
+        // localStorage.setItem("storedTasks", JSON.stringify(TASKS))
+        saveTasksToLocalStorage()
         render();
     }
 })
+
 
 
 function render() {
@@ -33,17 +42,18 @@ function render() {
         // <p class="${i.taskStatus ? 'text-decoration:line-through' : 'text-decoration: none'}">${i.taskTitle}</p>
 
         div.innerHTML = `
-        <p class="task-title" style="${i.taskStatus ? 'text-decoration: line-through; background-color: #01b501; color: #fff; padding: 10px; border-radius: 4px;' : ""} ">${i.taskTitle}</p>
-
-        <div class="task-actions">
-            <button class="task-action__btn complete">Complete</button>
-            <button class="task-action__btn edit">Edit</button>
-            <button class="task-action__btn time">${i.taskCreatedHour} : ${i.taskCreatedMinutes}</button>
-            <button class="task-action__btn del">Delete</button>
-        </div>
-        `
+            <p class="task-title" style="${i.taskStatus ? 'text-decoration: line-through; background-color: #01b501; color: #fff; padding: 10px; border-radius: 4px;' : ""} ">${i.taskTitle}</p>
+    
+            <div class="task-actions">
+                <button class="task-action__btn complete">Complete</button>
+                <button class="task-action__btn edit">Edit</button>
+                <button class="task-action__btn time">${i.taskCreatedHour} : ${i.taskCreatedMinutes}</button>
+                <button class="task-action__btn del">Delete</button>
+            </div>
+            `
         taksWrapper.append(div)
     })
+
 }
 
 
@@ -78,6 +88,7 @@ taksWrapper.addEventListener("click", (e) => {
         if (e.target.parentElement.previousElementSibling.textContent != TASKS[taskIndex].taskTitle) {
             TASKS[taskIndex].taskTitle = e.target.parentElement.previousElementSibling.textContent;
         }
+        saveTasksToLocalStorage()
         render()
     }
 })
@@ -98,3 +109,4 @@ function addZero(text) {
     return text.padStart(2, "0")
 }
 // addZero("5")
+
