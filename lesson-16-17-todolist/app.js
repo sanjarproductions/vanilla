@@ -10,7 +10,6 @@ function saveTasksToLocalStorage() {
 }
 
 
-render()
 
 addBtn.addEventListener("click", (e) => {
     e.preventDefault()
@@ -32,6 +31,7 @@ addBtn.addEventListener("click", (e) => {
 })
 
 
+render()
 
 function render() {
     taksWrapper.innerHTML = "";  // so that we dont have dublicates
