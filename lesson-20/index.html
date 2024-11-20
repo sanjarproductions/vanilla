@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+        integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .item {
+            background: #c6c6c6;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .item strong {
+            pointer-events: none;
+        }
+
+        .answer__wrapper {
+            height: 1px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .active{
+            height: 100px;
+            /* height: 100%; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <reserved-test>Hello</reserved-test> -->
+    <!-- <reserved-test>Lorem, ipsum</reserved-test> -->
+
+    <!-- <color-text-red>Hi</color-text-red> -->
+
+    <!-- Accordion -->
+    <ul class="accordion" id="accordion">
+
+    </ul>
+    <script src="app.js"></script>
+</body>
+
+</html>
