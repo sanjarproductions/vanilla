@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+        }
+
+        nav {
+            border-bottom: 1px solid #000;
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0px;
+        }
+
+        ul {
+            display: flex;
+            gap: 10px;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        form {
+            max-width: 400px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 30px 0px;
+        }
+
+        form input {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="container">
+            <h1>Logo</h1>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./signup.html">Sign Up</a></li>
+                <li><a href="./login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <form id="login-form">
+            <input type="email" class="" id="login-email" required placeholder="Your Email">
+            <input type="password" class="" id="login-password" required placeholder="Your Password">
+            <button type="submit">Click</button>
+        </form>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!-- must be before -->
+    <script src="../login.js"></script>
+</body>
+
+</html>
