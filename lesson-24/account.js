@@ -1,5 +1,5 @@
-const userDataWrapper = document.querySelector("#user-data")
-console.log(userDataWrapper)
+// const userDataWrapper = document.querySelector("#user-data")
+// console.log(userDataWrapper)
 
     (() => {
         if (localStorage.getItem("auth-token")) {
@@ -8,16 +8,10 @@ console.log(userDataWrapper)
                     Authorization: `Bearer ${localStorage.getItem("auth-token")}`
                 }
             })
-                .then(response => render(response.data))
+                .then(response => console.log(response.data))
         }
         else {
             window.location.replace("http://127.0.0.1:5500/lesson-24/pages/signup.html")
         }
 
     })()
-
-render()
-function render(user) {
-    console.log(user)
-    
-}
