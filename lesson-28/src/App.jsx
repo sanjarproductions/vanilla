@@ -44,6 +44,6 @@ export default App
 
 
 // conditional rendering => is normal rendering but with if statement
-// useEffect()
+// useEffect(){}
 // axios
 // useRef => aka query selector for react js, dont use .querySelector()
