@@ -3,7 +3,9 @@ import instance from '../../api/axios';
 import { v4 as uuidv4 } from 'uuid';
 import ProductSlider from '../product-slider/ProductSlider';
 import "./Main.css"
+
 const Main = () => {
+
     const [homeReelData, setHomeReelData] = useState([])
     useEffect(() => {
         instance("/category/category-reel")
@@ -14,9 +16,9 @@ const Main = () => {
         <>
             <div className="main-container">
                 {
-                    homeReelData.map(i =>
+                    homeReelData.splice(0, 4).map(i =>
                         <Fragment key={uuidv4()}>
-                            <strong>{i.categoryName_uz}</strong>
+                            <strong className='category-name'>{i.categoryName_uz}</strong>
                             <ProductSlider categoryData={i} />
                         </Fragment>
                     )
