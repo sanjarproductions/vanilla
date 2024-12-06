@@ -11,17 +11,15 @@ const Search = () => {
                 <div className="container">
                     <div className="flex">
                         <img src={MainLogo} alt="" className='main-logo' />
-                        {/* form */}
                         <div className='input-wrapper'>
                             <input type="text" name="" id="" placeholder='Qidirish' />
                             <button><CiSearch /></button>
                         </div>
                     </div>
                     <div className="links">
-                        <Link path="/">Бош сахифа</Link>
-                        <Link path="/">Ҳамкорлар</Link>
-                        <Link path="/">Биз ҳақимизда</Link>
-                        <Link path="/">Алоқа</Link>
+                        <Link to="/">Бош сахифа</Link>
+                        <Link to="/about">Биз ҳақимизда</Link>
+                        <Link to="/contact">Алоқа</Link>
                     </div>
                 </div>
             </div>
