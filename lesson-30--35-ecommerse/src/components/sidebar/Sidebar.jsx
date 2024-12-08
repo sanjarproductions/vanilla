@@ -3,8 +3,9 @@ import "./Sidebar.css"
 import { useEffect, useState } from 'react'
 import instance from "../../api/axios"
 import { v4 as uuidv4 } from 'uuid';
-import { Link } from "react-router";
 import CategoryIcon from "../../assets/categoryIcon.svg"
+
+import { Link } from "react-router-dom"
 
 const Sidebar = () => {
     const [categoryData, setCategoryData] = useState([])
@@ -24,16 +25,19 @@ const Sidebar = () => {
                     <img src={CategoryIcon} alt="" />
                     <p>Kategoriyalar</p>
                 </li>
-
                 {
-                    categoryData.mainCategory_uz?.map((i, index) =>
-                        <li key={uuidv4()}> <Link to="">{i}</Link></li>
-
-                    )
-
-                }
-                {
-                    categoryData.productSubCategories_uz?.map(i => console.log(i))
+                    categoryData.mainCategory_uz?.map((i, index) => (
+                        <li key={index}>
+                            <Link className='maincategory' to={`/maincategory/${i}`}>{i}</Link>
+                            <div className="sub-category-item">
+                                {
+                                    categoryData.productSubCategories_uz[index].map((subItem, idx) => (
+                                        <Link className='subcategory' to={`/subcategory/${subItem}`} key={idx}>{subItem}</Link>
+                                    ))
+                                }
+                            </div>
+                        </li>
+                    ))
                 }
             </ul>
         </div>
