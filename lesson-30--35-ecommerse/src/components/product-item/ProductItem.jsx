@@ -16,7 +16,7 @@ const ProductItem = ({ productItemData }) => {
                         <div className="product-flex">
                             <p>{productItemData.productMainCategory_uz}</p> <p>{productItemData.productSubCategory_uz}</p>
                         </div>
-                        <p>{productItemData.productSizesAndQuantity.length > 1 ? `${productItemData.productSizesAndQuantity[0].price} - ${productItemData.productSizesAndQuantity[productItemData.productSizesAndQuantity.length - 1].price}` : `${productItemData.productSizesAndQuantity[0].price}`}</p>
+                        <p>{productItemData.productSizesAndQuantity.length > 1 ? `${productItemData.productSizesAndQuantity[0].price} - ${productItemData.productSizesAndQuantity[productItemData.productSizesAndQuantity.length - 1].price} SUM` : `${productItemData.productSizesAndQuantity[0].price} SUM`}</p>
                     </div>
                 </Link>
 

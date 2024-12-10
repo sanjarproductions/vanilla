@@ -3,6 +3,7 @@ import "./Product.css";
 import Nav from '../../components/nav/Nav';
 import Search from '../../components/search/Search';
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 import instance from "../../api/axios"
 
@@ -12,6 +13,8 @@ import { FaCartShopping } from "react-icons/fa6";
 const Product = () => {
   const [productAmount, setProductAmount] = useState(1)
   const [singleProductData, setSingleProductData] = useState({})
+  const [activeImageNumber, setActiveImageNumber] = useState(0)
+  const [selectedVariant, setSelectedVariant] = useState(0)
   let productViewURL = useParams("")
 
   useEffect(() => {
@@ -19,15 +22,41 @@ const Product = () => {
       .then(response => setSingleProductData(response.data?.singleProduct[0]))
   }, [productViewURL.id])
 
-  // console.log({singleProductData?.productSizesAndQuantity?.price?.[0]})
-  // console.log(singleProductData?.productSizesAndQuantity)
+  function increment() {
+    if (productAmount < +singleProductData?.productSizesAndQuantity?.[selectedVariant].quantity) {
+      setProductAmount(productAmount + 1)
+    }
+  }
+
+  function decrement() {
+    if (productAmount > 1) {
+      setProductAmount(productAmount - 1)
+    }
+  }
+
+  console.log(singleProductData)
+
+
+
+
   return (
     <div className='product-view'>
       <Nav />
       <Search />
       <div className="container">
         <div className="main-flex product-wrapper">
-          <img className='product-img' src={singleProductData?.productImages?.[0]} alt="" />
+
+          <div>
+            <img className='product-img' src={singleProductData?.productImages?.[activeImageNumber]} alt="" />
+            <div className="product-view__images">
+              {
+                singleProductData?.productImages?.map((productImageThumb, ind) =>
+                  <img key={uuidv4()} width={100} style={ind === activeImageNumber ? { border: "2px solid dodgerblue" } : null} src={productImageThumb} alt='' onClick={() => { setActiveImageNumber(ind) }} className='product-small__img' />
+                )
+              }
+            </div>
+          </div>
+
           <div className='product-details'>
 
             <h1 className='productView-title'>{singleProductData?.productName_uz}</h1>
@@ -38,24 +67,36 @@ const Product = () => {
               <p>{singleProductData?.productSubCategory_uz}</p>
             </div>
 
-            <div className="product-view__select">
-              <div className="flex">
-                <p>Ўлчам:</p>
-                <select name="" id="" className='product-view__sizeselect'>
-                  {
-                    singleProductData?.productSizesAndQuantity?.map(i =>
-                      <>
-                        {/* <p className='product-price'>{i.price}</p> */}
-                        <option value={i.size} className='product-size'>{i.size}</option>
-                        {/* <p className='product-quantity'>Омборда: {i.quantity}</p> */}
-                      </>
-                    )
-                  }
-                </select>
+            <div className="wrapper flex">
+
+              <div className="product-cost__quantity">
+                <p className='product-quantity'>Омборда: {singleProductData?.productSizesAndQuantity?.[selectedVariant].quantity}</p>
+                <p className='product-price'>{singleProductData?.productSizesAndQuantity?.[selectedVariant].price} SUM</p>
+              </div>
+              <div className="product-view__select">
+                <div className="flex">
+                  <p>Ўлчам:</p>
+
+                  <select key={uuidv4} name="" id="" className='product-view__sizeselect' onChange={(e) => {
+                    setSelectedVariant(+e.target.value);
+                    setProductAmount(1);
+                  }}>
+                    {
+                      singleProductData?.productSizesAndQuantity?.map((i, index) =>
+                        <>
+                          <option key={uuidv4} value={index} className='product-size'>{i.size}</option>
+                        </>
+                      )
+                    }
+                  </select>
+
+                </div>
+
+
               </div>
 
-
             </div>
+
 
             <div className="product-view__desc">
               {
@@ -66,26 +107,29 @@ const Product = () => {
                 )
               }
             </div>
+
             <div className='purchase'>
               <div className="flex">
                 <div className='item'>
                   <p>Сони:</p>
                   <div className="flex">
                     <div className="counter">
-                      <button onClick={() => (setProductAmount(productAmount - 1))}>-</button>
+                      <button onClick={decrement}>-</button>
                       <strong>{productAmount}</strong>
-                      <button onClick={() => (setProductAmount(productAmount + 1))}>+</button>
+                      <button onClick={increment}>+</button>
                     </div>
                   </div>
                 </div>
                 <div className='item'>
                   <p>Умумий нархи:</p>
                   {/* <button>{singleProductData?.productSizesAndQuantity?.price?.[0]}</button> */}
-                  <button className='total-price'>2000 SUM</button>
+                  <button className='total-price'>{productAmount * singleProductData?.productSizesAndQuantity?.[selectedVariant].price} SUM</button>
                 </div>
                 {/* <button> <FaCartShopping /> Саватга қўшиш</button> */}
               </div>
             </div>
+            <button className='add-tocart'> <FaCartShopping />Саватга қўшиш</button>
+
           </div>
 
         </div>

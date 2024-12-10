@@ -2,7 +2,6 @@ import React from 'react'
 import "./Sidebar.css"
 import { useEffect, useState } from 'react'
 import instance from "../../api/axios"
-import { v4 as uuidv4 } from 'uuid';
 import CategoryIcon from "../../assets/categoryIcon.svg"
 
 import { Link } from "react-router-dom"
@@ -14,7 +13,7 @@ const Sidebar = () => {
         instance("/category/category-nest")
             .then(response => setCategoryData(response.data))
     }, [])
-    console.log(categoryData)
+    // console.log(categoryData)
 
     return (
         // <div className="container">
