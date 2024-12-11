@@ -25,6 +25,10 @@ function App() {
 
 export default App
 
-// search
+// search +
 // subcategory +
-// product-view
+// product-view +
+
+// admin + auth
+// add to cart (redux)
+// language

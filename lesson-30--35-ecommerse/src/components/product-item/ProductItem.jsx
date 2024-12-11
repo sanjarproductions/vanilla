@@ -20,7 +20,7 @@ const ProductItem = ({ productItemData }) => {
                     </div>
                 </Link>
 
-                <button className='default-btn'><FaCartShopping />  Выбор</button>
+                <button className='default-btn'><FaCartShopping />  Tanlash</button>
             </div>
         </>
     )

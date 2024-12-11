@@ -32,7 +32,7 @@ const Search = () => {
                             <input type="text" name="" id="" placeholder='Qidirish' onChange={e => setInputSearch(e.target.value)} />
                             <button><CiSearch /></button>
 
-                            {searchResults.length > 0 ?
+                            {searchResults.length > 0 || inputSearch.length != 0 ?
                                 <div className='search-results'>
                                     {
                                         searchResults?.map(searchedItem =>
@@ -40,7 +40,7 @@ const Search = () => {
                                                 <Link to={`/product-view/${searchedItem._id}`}>
                                                     <div className="flex searched-item">
                                                         <div className='flex searched-item__title'>
-                                                            <img src={searchedItem?.productImages?.[0]} alt="" />
+                                                            <img className='search-product__image' src={searchedItem?.productImages?.[0]} alt="" />
                                                             <h4>{searchedItem.productName_uz}</h4>
 
                                                         </div>
@@ -50,10 +50,19 @@ const Search = () => {
                                             </>
                                         )
                                     }
+
+                                    {searchResults.length == 0 && inputSearch.length != 0 ?
+                                        <div className='notfound-img__wrapper'>
+                                            <img src='https://cdn.dribbble.com/userupload/2905383/file/original-4ea237e94e803ddd575a66eb32198899.png?resize=400x0' className='not-fount__message' />
+                                        </div>
+
+                                        : null}
+
                                 </div> :
-                                <div className="search-results">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="" className='not-fount__message'/>
-                                </div>
+                                // <div className="search-results">
+                                //     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="" className='not-fount__message'/>
+                                // </div>
+                                <></>
                             }
 
                         </div>

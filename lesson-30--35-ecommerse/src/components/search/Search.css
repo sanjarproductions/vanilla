@@ -71,14 +71,14 @@ input {
     border-radius: 30px;
 }
 
-.search-results img {
+.search-results .search-product__image {
     width: 70px;
     height: 70px;
 }
 
 .search-results {
     position: absolute;
-    top: calc(100% + 5px) ;
+    top: calc(100% + 5px);
     max-height: 300px;
     /* height: 300px; */
     overflow-y: auto;
@@ -109,7 +109,15 @@ input {
     gap: 20px;
     color: #000;
 }
-.searched-item .not-fount__message{
-    max-width: 20px;
+
+.notfound-img__wrapper {
+    /* margin: auto; */
+    display: flex;
+    align-items: center;
+}
+
+.not-fount__message {
+    max-width: 330px;
     width: 100%;
+    margin: auto;
 }
