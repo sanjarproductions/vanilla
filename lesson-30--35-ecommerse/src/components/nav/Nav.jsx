@@ -15,7 +15,7 @@ const Nav = () => {
     return (
         <nav>
             <div className="container">
-                {/* <p>{t("greeting")}</p> */}
+                <p>{t("greeting")}</p>
                 <div className="flex">
                     <div className='flags'>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Flag_of_Uzbekistan.svg/1200px-Flag_of_Uzbekistan.svg.png" alt="" width="50" height="30" style={{ marginRight: 15 + "px" }} onClick={() => changeLang("uz")} />
