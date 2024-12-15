@@ -36,6 +36,6 @@ export default App
 // subcategory +
 // product-view +
 
-// admin + auth
+// admin + auth +
 // add to cart (redux)
-// language
+// language -
