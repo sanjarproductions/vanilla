@@ -1,0 +1,31 @@
+.container {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+
+.carts {
+    display: grid;
+    grid-template-columns: repeat(3, 380px);
+    gap: 25px;
+}
+
+.carts .product-cart img {
+    /* max-width: 100px; */
+    width: 100%;
+    border-radius: 5px;
+}
+
+.carts .product-cart {
+    border: 1px solid #00000083;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.carts .product-cart button{
+    padding: 10px 0px;
+    font-size: 17px;
+}
