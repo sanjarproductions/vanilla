@@ -17,7 +17,7 @@ const Cart = () => {
                             {/* <br /> */}
 
                             <strong style={{ fontSize: 30 + "px" }}>${price}</strong>
-                            <button className='btn btn-primary' onClick={() => addToCard({ title, description, images, id, price })}>Add To Card</button>
+                            {/* <button className='btn btn-primary' onClick={() => addToCard({ title, description, images, id, price })}>Add To Card</button> */}
                         </div>
                     ))
                 }
