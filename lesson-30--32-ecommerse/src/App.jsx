@@ -9,11 +9,14 @@ import ScrollToTop from "./components/scrollToTop/scrollToTop"
 import Login from "./routes/login/Login"
 import Admin from "./routes/admin/Admin"
 import { ToastContainer } from "react-toastify"
+import Cart from "./components/cart/Cart"
+
 function App() {
 
   return (
     <>
       <ScrollToTop />
+      <Cart/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

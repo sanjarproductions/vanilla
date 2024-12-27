@@ -3,8 +3,11 @@ import instance from '../../api/axios';
 import { v4 as uuidv4 } from 'uuid';
 import ProductSlider from '../product-slider/ProductSlider';
 import "./Main.css"
+import { useSelector } from 'react-redux';
 
 const Main = () => {
+    const currentLng = useSelector(state => state.language.lang)
+    // console.log(currentLng)
 
     const [homeReelData, setHomeReelData] = useState([])
     useEffect(() => {
@@ -16,9 +19,9 @@ const Main = () => {
         <>
             <div className="main-container">
                 {
-                    homeReelData.splice(0, 4).map(i =>
+                    homeReelData.slice(0, 4).map(i =>
                         <Fragment key={uuidv4()}>
-                            <strong className='category-name'>{i.categoryName_uz}</strong>
+                            <strong className='category-name'>{currentLng === "uz" ? i.categoryName_uz : i.categoryName_ru}</strong>
                             <ProductSlider categoryData={i} />
                         </Fragment>
                     )

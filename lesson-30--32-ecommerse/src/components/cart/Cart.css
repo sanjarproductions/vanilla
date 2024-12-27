@@ -1,0 +1,33 @@
+.cart-wrapper {
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    align-items: start;
+}
+
+.cart {
+    display: none;
+    width: 300px;
+    height: 100vh;
+    background: red;
+}
+
+.cart--active{
+    display: block;
+}
+
+.cart-btn {
+    padding: 10px 15px;
+    background: #fff;
+    border: none;
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, .25);
+}
+
+.cart-btn svg {
+    font-size: 40px;
+}

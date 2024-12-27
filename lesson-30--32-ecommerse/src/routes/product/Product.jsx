@@ -4,6 +4,7 @@ import Nav from '../../components/nav/Nav';
 import Search from '../../components/search/Search';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
 
 import instance from "../../api/axios"
 
@@ -11,6 +12,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 
 const Product = () => {
+  const dispatch = useDispatch()
   const [productAmount, setProductAmount] = useState(1)
   const [singleProductData, setSingleProductData] = useState({})
   const [activeImageNumber, setActiveImageNumber] = useState(0)
@@ -34,9 +36,16 @@ const Product = () => {
     }
   }
 
-  console.log(singleProductData)
+  // console.log(singleProductData)
 
-
+  function addToCard(productData) {
+    const { productSizesAndQuantity, ...rest } = productData;
+    rest.selectedType = productSizesAndQuantity[selectedVariant];
+    rest.count = productAmount;
+    rest.totalPrice = singleProductData?.productSizesAndQuantity?.[selectedVariant].price * productAmount;
+      dispatch({ product: rest, type: "ADD_TO_CART" })
+    // console.log(rest)
+  }
 
 
   return (
@@ -76,25 +85,20 @@ const Product = () => {
               <div className="product-view__select">
                 <div className="flex">
                   <p>Ўлчам:</p>
-
-                  <select key={uuidv4} name="" id="" className='product-view__sizeselect' onChange={(e) => {
+                  <select key={uuidv4()} name="" id="" className='product-view__sizeselect' onChange={(e) => {
                     setSelectedVariant(+e.target.value);
                     setProductAmount(1);
                   }}>
                     {
                       singleProductData?.productSizesAndQuantity?.map((i, index) =>
                         <>
-                          <option key={uuidv4} value={index} className='product-size'>{i.size}</option>
+                          <option key={uuidv4()} value={index} className='product-size'>{i.size}</option>
                         </>
                       )
                     }
                   </select>
-
                 </div>
-
-
               </div>
-
             </div>
 
 
@@ -128,7 +132,7 @@ const Product = () => {
                 {/* <button> <FaCartShopping /> Саватга қўшиш</button> */}
               </div>
             </div>
-            <button className='add-tocart'> <FaCartShopping />Саватга қўшиш</button>
+            <button className='add-tocart' onClick={() => addToCard(singleProductData)}> <FaCartShopping />Саватга қўшиш</button>
 
           </div>
 

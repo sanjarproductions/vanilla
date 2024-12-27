@@ -13,12 +13,10 @@ const Search = () => {
         instance(`product/search/${inputSearch}`)
             .then(response => setSearchResults(response.data))
             .catch(err => {
-                // console.log(err)
                 setSearchResults([])
             })
     }, [inputSearch])
 
-    // console.log(searchResults)
 
     return (
         <>
@@ -58,20 +56,19 @@ const Search = () => {
 
                                         : null}
 
-                                </div> :
-                                // <div className="search-results">
-                                //     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg" alt="" className='not-fount__message'/>
-                                // </div>
-                                <></>
+                                </div> : <></>
                             }
 
                         </div>
                     </div>
                 </div>
+
                 <div className="links">
-                    <Link to="/">Бош сахифа</Link>
-                    <Link to="/about">Биз ҳақимизда</Link>
-                    <Link to="/contact">Алоқа</Link>
+                    <div className="container">
+                        <Link to="/">Бош сахифа</Link>
+                        <Link to="/about">Биз ҳақимизда</Link>
+                        <Link to="/contact">Алоқа</Link>
+                    </div>
                 </div>
             </div>
         </>
