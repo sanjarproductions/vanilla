@@ -10,13 +10,14 @@ import Login from "./routes/login/Login"
 import Admin from "./routes/admin/Admin"
 import { ToastContainer } from "react-toastify"
 import Cart from "./components/cart/Cart"
+import Orders from "./routes/orders/Orders"
 
 function App() {
 
   return (
     <>
       <ScrollToTop />
-      <Cart/>
+      <Cart />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -26,7 +27,12 @@ function App() {
         <Route path="/subcategory/:name" element={<SubCategory />}></Route>
         <Route path="/subcategory/:name" element={<SubCategory />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/admin" element={<Admin />}></Route>
+        <Route path="/admin" element={<Admin />}>
+          <Route path="/admin/orders" element={<Orders />} />
+        </Route>
+        {/* <Route>
+
+        </Route> */}
       </Routes>
       <ToastContainer limit={2} />
     </>
