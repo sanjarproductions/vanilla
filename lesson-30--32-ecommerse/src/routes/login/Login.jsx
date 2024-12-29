@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import instance from "../../api/axios"
 import { useNavigate } from 'react-router-dom';
 import "./Login.css"
@@ -37,6 +37,12 @@ const Login = () => {
         setUsername("")
         setPassword("")
     }
+
+    useEffect(() => {
+        if (localStorage.getItem("admin-auth-token")) {
+            navigate("/admin")
+        }
+    }, [])
 
     return (
         <div className='admin'>

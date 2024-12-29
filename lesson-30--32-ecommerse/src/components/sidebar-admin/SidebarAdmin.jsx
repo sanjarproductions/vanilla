@@ -1,17 +1,37 @@
 import React from 'react'
 import "./SidebarAdmin.css"
 import { Link } from 'react-router-dom'
-
+import Logo from "../../assets/main-logo.svg"
+import Icon from "../../assets/admin-sidebar.jpg"
+import { useDispatch } from 'react-redux'
 const SidebarAdmin = () => {
+  const dispatch = useDispatch()
+
+  const signOut = () => {
+    dispatch({ type: "LOGOUT" })
+  }
+
   return (
-    <div className='sidebar'>
-      <Link to={"/admin/order/all"}>All</Link>
-      <Link to={"/admin/order/contacted"}>Contacted</Link>
-      <Link to={"/admin/order/not-contacted"}>Not Contacted</Link>
-      
-      <Link to={"/admin/order/all"}>All</Link>
-      <Link to={"/admin/order/contacted"}>Contacted</Link>
-      <Link to={"/admin/order/not-contacted"}>Not Contacted</Link>
+    <div className='admin-sidebar'>
+      <div className="logo-wrapper">
+        <img src={Logo} alt="" />
+      </div>
+
+      <div className="badge">
+        <div className="badge-icon">
+          <img src={Icon} alt="" className='badge-icon' />
+        </div>
+        <div className="text">
+          <strong>6270F64B</strong>
+          <p>Admin</p>
+        </div>
+      </div>
+      <div className="admin-links">
+        <Link to={"/admin/orders"}>Orders</Link>
+        <Link to={"/admin/controll"}>Controll</Link>
+        <Link to={"/admin/create"}>Create</Link>
+        <Link to={"/admin/log-out"}>Log Out</Link>
+      </div>
     </div>
   )
 }

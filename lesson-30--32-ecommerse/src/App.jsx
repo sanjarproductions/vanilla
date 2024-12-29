@@ -10,7 +10,10 @@ import Login from "./routes/login/Login"
 import Admin from "./routes/admin/Admin"
 import { ToastContainer } from "react-toastify"
 import Cart from "./components/cart/Cart"
-import Orders from "./routes/orders/Orders"
+import Orders from "./routes/admin-orders/Orders"
+import AdminControll from "./routes/admin-controll/AdminControll"
+import AdminCreate from "./routes/admin-create/AdminCreate"
+import AdminOrdersDetails from "./routes/adminOrdersDetails/AdminOrdersDetails"
 
 function App() {
 
@@ -27,12 +30,15 @@ function App() {
         <Route path="/subcategory/:name" element={<SubCategory />}></Route>
         <Route path="/subcategory/:name" element={<SubCategory />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/admin" element={<Admin />}>
-          <Route path="/admin/orders" element={<Orders />} />
-        </Route>
-        {/* <Route>
 
-        </Route> */}
+        <Route path="/admin" element={<Admin />}>
+          <Route path="/admin/orders" element={<Orders />}>
+            <Route path="/admin/orders/:status" element={<AdminOrdersDetails />} />
+          </Route>
+          <Route path="/admin/controll" element={<AdminControll />} />
+          <Route path="/admin/create" element={<AdminCreate />} />
+        </Route>
+
       </Routes>
       <ToastContainer limit={2} />
     </>

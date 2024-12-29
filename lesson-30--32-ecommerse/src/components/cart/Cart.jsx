@@ -9,26 +9,28 @@ const Cart = () => {
     const addedProducts = useSelector(state => state.cartProducts);
     const [isCartOpen, setIsCartOpen] = useState(false);
 
-    let bannedDirections = ["/admin"]
 
-    return !location.pathname.includes(bannedDirections) ? (
+    const bannedPatterns = [/^\/admin/, /^\/login/];
+
+    return !bannedPatterns.some((pattern) => pattern.test(location.pathname)) ? (
         <div className="cart-wrapper">
-            <button onClick={() => setIsCartOpen(!isCartOpen)} className='cart-btn'>
+            <button onClick={() => setIsCartOpen(!isCartOpen)} className="cart-btn">
                 <FaCartShopping />
             </button>
             <div className={isCartOpen ? "cart cart--active" : "cart"}>
-                {addedProducts?.length === 0 ? (
+                {!addedProducts || addedProducts.length === 0 ? (
                     <p>Your cart is empty</p>
                 ) : (
-                    addedProducts?.map((product, index) => (
-                        <div key={index}>
+                    addedProducts.map((product) => (
+                        <div key={product.id}>
                             <p>Price: {product.price}</p>
                         </div>
                     ))
                 )}
             </div>
         </div>
-    ) : <></>
+    ) : null;
+
 }
 
 export default Cart;

@@ -18,15 +18,15 @@ const Sidebar = () => {
     return (
         // <div className="container">
         <div className='sidebar'>
-            <ul>
+            <ul className='sidebar-ul'>
 
-                <li>
+                <li className='sidebar-link'>
                     <img src={CategoryIcon} alt="" />
                     <p>Kategoriyalar</p>
                 </li>
                 {
                     categoryData.mainCategory_uz?.map((i, index) => (
-                        <li key={index}>
+                        <li className='sidebar-link' key={index}>
                             <Link className='maincategory' to={`/maincategory/${i}`}>{i}</Link>
                             <div className="sub-category-item">
                                 {

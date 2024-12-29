@@ -5,12 +5,11 @@ import { Outlet } from 'react-router-dom'
 
 const Admin = () => {
 
-  //https://mold-components.onrender.com/order/all-orders
 
   return (
-    <div>
-      <Outlet/>
+    <div className='admin-wrapper'>
       <SidebarAdmin />
+      <Outlet />
     </div>
   )
 }
