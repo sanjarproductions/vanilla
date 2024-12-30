@@ -8,7 +8,8 @@ const Admin = () => {
 
   return (
     <div className='admin-wrapper'>
-      <SidebarAdmin />
+      {/* <SidebarAdmin /> */}
+      hello admin
       <Outlet />
     </div>
   )

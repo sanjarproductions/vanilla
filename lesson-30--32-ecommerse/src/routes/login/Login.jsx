@@ -7,8 +7,10 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { AiOutlineLoading } from "react-icons/ai";
 import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate()
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -16,33 +18,37 @@ const Login = () => {
     const [isloading, setIsLoading] = useState(false)
 
     function submitForm(e) {
-        e.preventDefault()
+        e.preventDefault();
 
-        setIsLoading(true)
+        setIsLoading(true);
         instance.post("/auth/login", {
             username,
             password
         })
             .then(response => {
-                localStorage.setItem("admin-auth-token", response.data.token);
-                setIsLoading(false)
-                toast.success("Success")
-                navigate("/admin")
+                if (response.data.token) {
+                    setIsLoading(false);
+                    toast.success("Success");
+                    navigate("/admin");
+                    dispatch({ type: "LOGIN", payload: response.data });
+                }
             })
             .catch(err => {
-                console.log(err)
-                toast.error(err.response.data.message)
-                setIsLoading(false)
-            })
-        setUsername("")
-        setPassword("")
+                console.log(err);
+                toast.error(err.response?.data?.message || "An error occurred");
+                setIsLoading(false);
+            });
+        setUsername("");
+        setPassword("");
     }
 
     useEffect(() => {
+        const token = localStorage.getItem("admin-auth-token");
         if (localStorage.getItem("admin-auth-token")) {
-            navigate("/admin")
+            navigate("/admin");
         }
-    }, [])
+    }, []); // Runs only once when the component mounts
+
 
     return (
         <div className='admin'>

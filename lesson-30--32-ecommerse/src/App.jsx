@@ -14,7 +14,7 @@ import Orders from "./routes/admin-orders/Orders"
 import AdminControll from "./routes/admin-controll/AdminControll"
 import AdminCreate from "./routes/admin-create/AdminCreate"
 import AdminOrdersDetails from "./routes/adminOrdersDetails/AdminOrdersDetails"
-
+import Private from "./routes/private/Private"
 function App() {
 
   return (
@@ -31,12 +31,8 @@ function App() {
         <Route path="/subcategory/:name" element={<SubCategory />}></Route>
         <Route path="/login" element={<Login />}></Route>
 
-        <Route path="/admin" element={<Admin />}>
-          <Route path="/admin/orders" element={<Orders />}>
-            <Route path="/admin/orders/:status" element={<AdminOrdersDetails />} />
-          </Route>
-          <Route path="/admin/controll" element={<AdminControll />} />
-          <Route path="/admin/create" element={<AdminCreate />} />
+        <Route path="/" element={<Private />}>
+          <Route path="/admin" element={<Admin />} />
         </Route>
 
       </Routes>
