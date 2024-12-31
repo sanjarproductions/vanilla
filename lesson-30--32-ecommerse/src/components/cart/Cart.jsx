@@ -9,7 +9,7 @@ const Cart = () => {
     const addedProducts = useSelector(state => state.cartProducts);
     const [isCartOpen, setIsCartOpen] = useState(false);
 
-
+    console.log(addedProducts)
     const bannedPatterns = [/^\/admin/, /^\/login/];
 
     return !bannedPatterns.some((pattern) => pattern.test(location.pathname)) ? (

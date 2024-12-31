@@ -13,6 +13,13 @@ const loginReducer = (state = initialState, action) => {
                 token: action.payload.token,
                 isLogged: true
             })
+        case "LOGOUT":
+            localStorage.removeItem("admin-auth-token");
+            return ({
+                admin: null,
+                token: "",
+                isLogged: false
+            })
         default:
             return state
     }

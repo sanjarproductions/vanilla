@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom'
 import Logo from "../../assets/main-logo.svg"
 import Icon from "../../assets/admin-sidebar.jpg"
 import { useDispatch } from 'react-redux'
+
 const SidebarAdmin = () => {
+  
   const dispatch = useDispatch()
 
   const signOut = () => {
@@ -29,7 +31,7 @@ const SidebarAdmin = () => {
       <div className="admin-links">
         <Link to={"/admin/orders"}>Orders</Link>
         <Link to={"/admin/controll"}>Controll</Link>
-        <Link to={"/admin/log-out"}>Log Out</Link>
+        <button onClick={signOut}>Log Out</button>
       </div>
     </div>
   )
