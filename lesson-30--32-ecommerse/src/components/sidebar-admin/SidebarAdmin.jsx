@@ -29,7 +29,6 @@ const SidebarAdmin = () => {
       <div className="admin-links">
         <Link to={"/admin/orders"}>Orders</Link>
         <Link to={"/admin/controll"}>Controll</Link>
-        <Link to={"/admin/create"}>Create</Link>
         <Link to={"/admin/log-out"}>Log Out</Link>
       </div>
     </div>

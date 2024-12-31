@@ -17,28 +17,30 @@ const AdminOrdersDetails = () => {
             .then(response => setOrders(response.data.allOrders))
             .catch(err => console.log(err))
     }, [])
+     
     let contactedFilter = orders?.filter(item => item.contacted === true)
     let notContactedFilter = orders?.filter(item => item.contacted === false)
     console.log(contactedFilter, notContactedFilter)
+
     return (
         <div>
             {
                 status === "contacted" ? (
                     <>
                         {contactedFilter.map(orderItem => (
-                            <p key={orderItem.id}>{orderItem.fullname}</p>
+                            <p key={orderItem._id}>{orderItem.fullname}</p>
                         ))}
                     </>
                 ) : status === "all" ? (
                     <>
                         {orders.map(orderItem => (
-                            <p key={orderItem.id}>{orderItem.fullname}</p>
+                            <p key={orderItem._id}>{orderItem.fullname}</p>
                         ))}
                     </>
                 ) : (
                     <>
                         {notContactedFilter.map(orderItem => (
-                            <p key={orderItem.id}>{orderItem.fullname}</p>
+                            <p key={orderItem._id}>{orderItem.fullname}</p>
                         ))}
                     </>
                 )
