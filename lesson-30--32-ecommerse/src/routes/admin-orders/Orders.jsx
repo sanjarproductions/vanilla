@@ -1,12 +1,14 @@
 import React from 'react'
 import "./Orders.css"
 import { Link, Outlet } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Orders = () => {
-  
+  const navigate = useNavigate()
+  // navigate("/admin/orders/all")
   return (
-    <div>
-      <nav>
+    <div className='admin-nav__wrapper'>
+      <nav className='admin-orders__nav'>
         <ul>
           <li>
             <Link to={"/admin/orders/all"}>All</Link>
@@ -19,7 +21,7 @@ const Orders = () => {
           </li>
         </ul>
       </nav>
-      <Outlet/>
+      <Outlet />
     </div>
   )
 }

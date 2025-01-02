@@ -3,25 +3,56 @@ import "./Cart.css";
 import { useSelector } from 'react-redux';
 import { FaCartShopping } from "react-icons/fa6";
 import { useLocation } from 'react-router-dom';
-
 import { IoIosClose } from "react-icons/io";
+import instance from '../../api/axios';
+import { toast } from 'react-toastify';
 
 const Cart = () => {
-    let location = useLocation()
+    const location = useLocation();
     const addedProducts = useSelector(state => state.cart.cartProducts);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [clientName, setClientName] = useState("");
+    const [clientPhone, setClientPhone] = useState("");
 
-    console.log(addedProducts)
     const bannedPatterns = [/^\/admin/, /^\/login/];
+
+    function resetOrder() {
+        setIsCartOpen(false)
+        setClientName("")
+        setClientPhone("")
+        addedProducts.length = 0;
+        toast.success("Yuborildi!");
+    }
+
+    const CreateOrder = async (e) => {
+        e.preventDefault();
+
+        try {
+            const orderedProductIds = addedProducts.map(product => product._id); // Faqat IDlarni yuboramiz
+            const response = await instance.post('/order/create-order', {
+                fullname: clientName,
+                phonenumber: clientPhone,
+                orderedproducts: orderedProductIds,
+            }, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            resetOrder()
+            // console.log("Order successfully created:", response.data);
+
+        } catch (error) {
+            console.error("Error creating order:", error);
+        }
+    };
 
     return !bannedPatterns.some((pattern) => pattern.test(location.pathname)) ? (
         <div className="cart-wrapper">
-
-            {isCartOpen ? <></> :
+            {!isCartOpen ? (
                 <button onClick={() => setIsCartOpen(!isCartOpen)} className="cart-btn">
                     <p className='cart-length'>{addedProducts.length}</p><FaCartShopping />
-                </button>}
-
+                </button>
+            ) : null}
 
             <div className={isCartOpen ? "cart cart--active" : "cart"}>
                 <button onClick={() => setIsCartOpen(!isCartOpen)} className="close-cart__btn">
@@ -42,21 +73,29 @@ const Cart = () => {
                                     </div>
                                 ))}
                             </div>
-                            <form className="cart-form">
-                                <input type="text" placeholder="Ism" required />
-                                <input type="text" placeholder="+998 ( )" required />
-                                <button onClick={""}>Yuborish</button>
+                            <form className="cart-form" onSubmit={CreateOrder}>
+                                <input
+                                    type="text"
+                                    placeholder="Ism"
+                                    required
+                                    value={clientName}
+                                    onChange={(e) => setClientName(e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    placeholder="+998 ( )"
+                                    required
+                                    value={clientPhone}
+                                    onChange={(e) => setClientPhone(e.target.value)}
+                                />
+                                <button type="submit">Yuborish</button>
                             </form>
                         </>
                     )}
                 </div>
             </div>
-
-
-
         </div>
     ) : null;
-
-}
+};
 
 export default Cart;

@@ -31,7 +31,7 @@ const SidebarAdmin = () => {
       <div className="admin-links">
         <Link to={"/admin/orders"}>Orders</Link>
         <Link to={"/admin/controll"}>Controll</Link>
-        <button onClick={signOut}>Log Out</button>
+        <button className='logout-btn' onClick={signOut}>Log Out</button>
       </div>
     </div>
   )
